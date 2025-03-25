@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:id="@+id/mainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/infoContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginEnd="8dp">
+
+            <TextView
+                android:id="@+id/idView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID" />
+
+            <TextView
+                android:id="@+id/typeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type" />
+
+            <TextView
+                android:id="@+id/AvailableCommView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Available Comm" />
+
+            <TextView
+                android:id="@+id/openingModeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Opening Mode" />
+
+            <TextView
+                android:id="@+id/openingView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Opening" />
+
+            <TextView
+                android:id="@+id/powerView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Power" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/controlContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Switch
+                android:id="@+id/itemSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/stopButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="STOP"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
