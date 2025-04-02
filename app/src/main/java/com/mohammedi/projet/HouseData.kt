@@ -1,6 +1,6 @@
 package com.mohammedi.projet
 
-data class House(
+data class HouseData(
     val houseId : Int,
     val owner : Boolean
 )

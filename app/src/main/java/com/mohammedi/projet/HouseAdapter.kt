@@ -1,18 +1,16 @@
 package com.mohammedi.projet
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.LinearLayout
 import android.widget.TextView
 import java.util.ArrayList
 
 data class HouseAdapter(
-    private val context: Context ,
-    private val dataSource: ArrayList<House>,
+    private val context: Context,
+    private val dataSource: ArrayList<HouseData>,
 ) : BaseAdapter()
 {
     private val inflater: LayoutInflater =
@@ -33,14 +31,18 @@ data class HouseAdapter(
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val rowView = convertView ?: inflater.inflate(R.layout.houses_list, parent, false)
 
-        val house = getItem(position) as House
+        val houseData = getItem(position) as HouseData
 
         val houseId = rowView.findViewById<TextView>(R.id.houseIdView)
-        val owner = rowView.findViewById<TextView>(R.id.ownerView)
+        val owner = rowView.findViewById<TextView>(R.id.houseOwnerView)
 
 
-        houseId.text = house.houseId.toString()
-        owner.text = house.owner.toString()
+        houseId.text = "Numéro de maison : "+houseData.houseId.toString()
+
+        if (houseData.owner)
+            owner.text = "Propriétaire"
+        else
+            owner.text = "Invité"
 
 
         return rowView
