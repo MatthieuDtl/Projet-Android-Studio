@@ -1,4 +1,4 @@
-package com.mohammedi.projet
+package com.mohammedi.projet.device
 
 data class DeviceData(
     val id: String,
@@ -9,6 +9,3 @@ data class DeviceData(
     val power: Int?
 )
 
-data class Devices(
-    val devices: ArrayList<DeviceData>
-)

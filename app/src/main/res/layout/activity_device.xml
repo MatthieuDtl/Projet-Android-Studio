@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DeviceActivity">
+    tools:context=".device.DeviceActivity">
 
     <TextView
         android:id="@+id/titleTextView"
@@ -24,10 +24,31 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#1386E2"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnNight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView" />
 
+    <Button
+        android:id="@+id/btnNight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="nightMode"
+        android:text="Mode Nuit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnDay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <Button
+        android:id="@+id/btnDay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="dayMode"
+        android:text="Mode jour"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnNight"
+        app:layout_constraintWidth_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
