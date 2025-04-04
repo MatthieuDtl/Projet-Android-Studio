@@ -9,12 +9,15 @@ import android.widget.Button
 import android.widget.ListView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.mohammedi.projet.Api
 import com.mohammedi.projet.R
 import com.mohammedi.projet.user.UserActivity
 import com.mohammedi.projet.device.DeviceActivity
+import com.mohammedi.projet.register.RegisterActivity
+import com.mohammedi.projet.settings.SettingsActivity
 
 class MenuActivity : AppCompatActivity() {
     private val houseData = ArrayList<HouseData>()
@@ -22,6 +25,7 @@ class MenuActivity : AppCompatActivity() {
     private var token: String? = null
     private lateinit var btnPeriph: Button
     private lateinit var btnUsers: Button
+    private lateinit var btnSettings: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +40,8 @@ class MenuActivity : AppCompatActivity() {
         token = intent.getStringExtra("TOKEN")
         btnPeriph = findViewById(R.id.btnPeriph)
         btnUsers = findViewById(R.id.btnUsers)
+        btnSettings = findViewById<Button>(R.id.btnSettings)
+
 
         btnPeriph.setOnClickListener(View.OnClickListener { v: View? ->
             navigateTo(DeviceActivity::class.java)
@@ -90,4 +96,15 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    fun logout(view:View){
+        finish()
+    }
+
+    fun goToSettings(view:View){
+        val intent = Intent(this, SettingsActivity::class.java)
+        startActivity(intent)
+    }
+
+
 }
