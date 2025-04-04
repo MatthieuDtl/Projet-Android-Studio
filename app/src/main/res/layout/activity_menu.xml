@@ -51,12 +51,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawableTop="@drawable/house_bouton"
             android:background="?attr/selectableItemBackground"
-            android:padding="8dp"
+            android:drawableTop="@drawable/house_bouton"
             android:drawablePadding="8dp"
-            android:text=""
-            android:gravity="center" />
+            android:gravity="center"
+            android:onClick="logout"
+            android:padding="8dp"
+            android:text="" />
 
         <Button
             android:id="@+id/btnPeriph"
@@ -89,12 +90,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawableTop="@drawable/settings_bouton"
             android:background="?attr/selectableItemBackground"
-            android:padding="8dp"
+            android:drawableTop="@drawable/settings_bouton"
             android:drawablePadding="8dp"
-            android:text=""
-            android:gravity="center" />
+            android:gravity="center"
+            android:onClick="goToSettings"
+            android:padding="8dp"
+            android:text="" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

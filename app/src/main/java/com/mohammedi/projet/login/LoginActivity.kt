@@ -37,32 +37,17 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("TOKEN", token.token)
             startActivity(intent)
         }
-        else if (responseCode == 401)
+        else
         {
-
-
             val error = findViewById<TextView>(R.id.txtError)
-            error.text = "Les données sont incorrectes"
-
-        }
-        else if (responseCode == 404)
-        {
-
-            val error = findViewById<TextView>(R.id.txtError)
-            error.text = "Mauvais Login"
-        }
-        else if (responseCode == 500)
-        {
-
-            val error = findViewById<TextView>(R.id.txtError)
-            error.text = "Une erreur s’est produite au niveau du serveur"
+            error.text = "Une erreur s'est produite"
 
         }
     }
     public fun registerNewAccount(view: View)
     {
-        val intent = Intent(this, RegisterActivity::class.java);
-        startActivity(intent);
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
     }
 
 }
