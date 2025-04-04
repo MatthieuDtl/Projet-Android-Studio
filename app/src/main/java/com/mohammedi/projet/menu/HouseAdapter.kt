@@ -1,4 +1,4 @@
-package com.mohammedi.projet
+package com.mohammedi.projet.menu
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.mohammedi.projet.R
 import java.util.ArrayList
 
 data class HouseAdapter(

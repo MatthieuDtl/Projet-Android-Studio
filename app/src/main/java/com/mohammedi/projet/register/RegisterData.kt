@@ -1,4 +1,4 @@
-package com.mohammedi.projet
+package com.mohammedi.projet.register
 
 data class RegisterData(
     val login: String,

@@ -1,4 +1,4 @@
-package com.mohammedi.projet
+package com.mohammedi.projet.menu
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.mohammedi.projet.Api
+import com.mohammedi.projet.R
+import com.mohammedi.projet.user.UserActivity
+import com.mohammedi.projet.device.DeviceActivity
 
 class MenuActivity : AppCompatActivity() {
     private val houseData = ArrayList<HouseData>()
@@ -52,6 +56,7 @@ class MenuActivity : AppCompatActivity() {
                 selectedHouseData = houseData[position]
                 btnPeriph.isEnabled = true
                 btnPeriph.alpha = 1.0f
+
                 if (houseData[position].owner) {
                     btnUsers.isEnabled = true
                     btnUsers.alpha = 1.0f

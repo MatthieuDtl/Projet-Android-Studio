@@ -1,14 +1,15 @@
-package com.mohammedi.projet
+package com.mohammedi.projet.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.mohammedi.projet.Api
+import com.mohammedi.projet.R
+import com.mohammedi.projet.menu.MenuActivity
+import com.mohammedi.projet.register.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
     private var userdata = LoginData("","")
@@ -24,11 +25,11 @@ class MainActivity : AppCompatActivity() {
         val pw = findViewById<TextView>(R.id.txtPassword).text.toString()
 
         userdata = LoginData(login,pw)
-        Api().post<LoginData,TokenData>("https://polyhome.lesmoulinsdudev.com/api/users/auth",userdata,::loginSuccess)
+        Api().post<LoginData, TokenData>("https://polyhome.lesmoulinsdudev.com/api/users/auth",userdata,::loginSuccess)
 
     }
 
-    private fun loginSuccess(responseCode:Int,token:TokenData?)
+    private fun loginSuccess(responseCode:Int,token: TokenData?)
     {
         if (responseCode==200 && token?.token != null)
         {

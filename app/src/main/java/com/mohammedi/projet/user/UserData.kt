@@ -1,4 +1,4 @@
-package com.mohammedi.projet
+package com.mohammedi.projet.user
 
 data class UserData(
     val userLogin : String,

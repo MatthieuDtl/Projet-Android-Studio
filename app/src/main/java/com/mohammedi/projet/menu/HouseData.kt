@@ -1,4 +1,4 @@
-package com.mohammedi.projet
+package com.mohammedi.projet.menu
 
 data class HouseData(
     val houseId : Int,

@@ -1,10 +1,13 @@
-package com.mohammedi.projet
+package com.mohammedi.projet.device
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.mohammedi.projet.Api
+import com.mohammedi.projet.R
 
 class DeviceActivity : AppCompatActivity(), DeviceCommandListener {
     private var token: String? = null
@@ -47,17 +50,34 @@ class DeviceActivity : AppCompatActivity(), DeviceCommandListener {
 
     override fun sendCommandToDevice(deviceId: String, command: String) {
 
-        Api().post<Map<String, String>, Unit>(
-            "https://polyhome.lesmoulinsdudev.com/api/houses/$houseId/devices/$deviceId/command",
-            mapOf("command" to command),
-            { responseCode, _ ->
-                if (responseCode == 200) {
-                    println("Commande envoyée avec succès à $deviceId")
-                } else {
-                    println("Erreur $responseCode pour $deviceId")
-                }
-            },
-            token
-        )
+        Api().post<Map<String, String>, Any>("https://polyhome.lesmoulinsdudev.com/api/houses/$houseId/devices/$deviceId/command", mapOf("command" to command), ::sendCommandSuccess, token)
+    }
+
+    private fun sendCommandSuccess(responseCode: Int, a: Any?) {
+        runOnUiThread {
+            if (responseCode == 200) {
+                println("Commande envoyée avec succès")
+            } else {
+                println("Erreur $responseCode lors de l'envoi de la commande")
+            }
+        }
+    }
+
+    fun nightMode (view: View){
+        for (device in devices) {
+            if(device.type =="light")
+                sendCommandToDevice(device.id,"TURN OFF")
+            else
+                sendCommandToDevice(device.id,"CLOSE")
+        }
+    }
+
+    fun dayMode (view: View){
+        for (device in devices) {
+            if(device.type =="light")
+                sendCommandToDevice(device.id,"TURN ON")
+            else
+                sendCommandToDevice(device.id,"OPEN")
+        }
     }
 }

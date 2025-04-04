@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#121212"
-    tools:context=".MenuActivity"
+    tools:context=".menu.MenuActivity"
     tools:ignore="ExtraText">
 
     <TextView
@@ -68,7 +68,8 @@
             android:padding="8dp"
             android:drawablePadding="8dp"
             android:text=""
-            android:gravity="center" />
+            android:gravity="center"
+            android:alpha="0.5"/>
 
         <Button
             android:id="@+id/btnUsers"
@@ -80,7 +81,8 @@
             android:padding="8dp"
             android:drawablePadding="8dp"
             android:text=""
-            android:gravity="center" />
+            android:gravity="center"
+            android:alpha="0.5"/>
 
         <Button
             android:id="@+id/btnSettings"

@@ -1,14 +1,15 @@
-package com.mohammedi.projet
+package com.mohammedi.projet.user
 
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.ListView
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.mohammedi.projet.Api
+import com.mohammedi.projet.R
 
 class UserActivity : AppCompatActivity(), DeleteListener {
     private var token: String? = null
@@ -55,9 +56,10 @@ class UserActivity : AppCompatActivity(), DeleteListener {
 
     fun addUser(view: View) {
         val login = findViewById<EditText>(R.id.editLogin).text.toString()
-        val userInfoAdd = mapOf("userLogin" to login)
+        val userData = UserData(userLogin = login, owner = 0)
 
-        Api().post<Any>("https://polyhome.lesmoulinsdudev.com/api/houses/$houseId/users", userInfoAdd, ::addUserSuccess, token)
+        Api().post<UserData>("https://polyhome.lesmoulinsdudev.com/api/houses/$houseId/users", userData, ::addUserSuccess, token)
+
     }
 
     private fun addUserSuccess(responseCode: Int) {
@@ -73,9 +75,8 @@ class UserActivity : AppCompatActivity(), DeleteListener {
 
 
     override fun onUserDelete(user: UserData) {
-        Api().delete<Any>(
-            "https://polyhome.lesmoulinsdudev.com/api/houses/$houseId/users", mapOf("userLogin" to user.userLogin), ::deleteUserSuccess, token
-        )
+        Api().delete<UserData>("https://polyhome.lesmoulinsdudev.com/api/houses/$houseId/users", user, ::deleteUserSuccess, token)
+
     }
 
     private fun deleteUserSuccess(responseCode: Int) {

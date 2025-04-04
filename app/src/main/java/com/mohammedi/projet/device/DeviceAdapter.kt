@@ -1,4 +1,4 @@
-package com.mohammedi.projet;
+package com.mohammedi.projet.device;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.Switch;
 import android.widget.TextView;
+import com.mohammedi.projet.R
 import java.util.ArrayList;
 
 class DeviceAdapter(
@@ -34,44 +34,44 @@ class DeviceAdapter(
         val openingMode = rowView.findViewById<TextView>(R.id.openingModeView);
         val availableCommView = rowView.findViewById<TextView>(R.id.AvailableCommView);
         val power = rowView.findViewById<TextView>(R.id.powerView);
-        val switch = rowView.findViewById<Switch>(R.id.itemSwitch);
+        val btnOpen = rowView.findViewById<Button>(R.id.btnOpen)
+        val btnClose = rowView.findViewById<Button>(R.id.btnClose)
         val stopButton = rowView.findViewById<Button>(R.id.stopButton);
 
         deviceId.text = device.id;
-        type.text = device.type;
-        opening.text = device.opening.toString();
-        openingMode.text = device.openingMode.toString()
-        availableCommView.text = device.availableCommands.joinToString(", ")
-        power.text = device.power.toString()
+        //type.text = device.type;
+        //opening.text = device.opening.toString();
+        //openingMode.text = device.openingMode.toString()
+        //availableCommView.text = device.availableCommands.joinToString(", ")
+        //power.text = device.power.toString()
 
 
-        if (device.power == 1){
-            switch.isChecked = true
-        }
-        else
-            switch.isChecked = false
-
-        switch.setOnCheckedChangeListener { _, isChecked ->
-            val command = if (isChecked) {
-                if (device.type == "light") "TURN ON" else "OPEN"
-            } else {
-                if (device.type == "light") "TURN OFF" else "CLOSE"
-            }
-            commandListener.sendCommandToDevice(device.id, command)
-        }
 
         if (device.type == "rolling shutter" || device.type == "garage door") {
+            btnOpen.text = "Ouvrir"
+            btnClose.text = "Fermer"
             stopButton.visibility = View.VISIBLE
             stopButton.setOnClickListener {
                 commandListener.sendCommandToDevice(device.id, "STOP");
             }
+            btnOpen.setOnClickListener {
+                commandListener.sendCommandToDevice(device.id, "OPEN");
+            }
+            btnClose.setOnClickListener {
+                commandListener.sendCommandToDevice(device.id, "CLOSE");
+            }
         } else {
+            btnOpen.text = "Allumer"
+            btnClose.text = "Eteindre"
             stopButton.visibility = View.GONE
+            btnOpen.setOnClickListener {
+                commandListener.sendCommandToDevice(device.id, "TURN ON");
+            }
+            btnClose.setOnClickListener {
+                commandListener.sendCommandToDevice(device.id, "TURN OFF");
+            }
         }
         return rowView;
     }
 }
 
-interface DeviceCommandListener {
-    fun sendCommandToDevice(deviceId: String, command: String);
-}

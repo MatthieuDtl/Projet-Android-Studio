@@ -1,4 +1,4 @@
-package com.mohammedi.projet
+package com.mohammedi.projet.user
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.TextView
+import com.mohammedi.projet.R
 
 
 class UserAdapter(
@@ -50,6 +51,3 @@ class UserAdapter(
     }
 }
 
-interface DeleteListener {
-    fun onUserDelete(user: UserData)
-}
