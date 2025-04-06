@@ -11,6 +11,7 @@ import com.mohammedi.projet.R
 import com.mohammedi.projet.menu.MenuActivity
 import com.mohammedi.projet.register.RegisterActivity
 
+//activité qui permet de se connecter
 class MainActivity : AppCompatActivity() {
     private var userdata = LoginData("","")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
     }
 
+    //connexion d'un utilisateur à l'API
     public fun login(view: View)
     {
         val login = findViewById<TextView>(R.id.txtLogin).text.toString()
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    //succès de la connexion ou erreur
     private fun loginSuccess(responseCode:Int,token: TokenData?)
     {
         if (responseCode==200 && token?.token != null)
@@ -44,6 +47,8 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+    //chargement de l'activié pour créer un compte
     public fun registerNewAccount(view: View)
     {
         val intent = Intent(this, RegisterActivity::class.java)

@@ -2,10 +2,7 @@
 <resources>
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
 
-        <item name="android:windowBackground">@color/surface</item>
-        <item name="colorSurface">@color/surface</item>
-        <item name="colorOnSurface">@color/on_surface</item>
-        <item name="colorError">@color/error</item>
+        <item name="android:windowBackground">"#FFFFFF"</item>
 
     </style>
 </resources>

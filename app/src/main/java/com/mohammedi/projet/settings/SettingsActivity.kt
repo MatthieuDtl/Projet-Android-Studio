@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.mohammedi.projet.R
 
+//activité pour les paramètres
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +23,7 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+    //change le thème de l'application (thème clair/sombre)
     public fun changeMode(view: View) {
         val modeActuel = AppCompatDelegate.getDefaultNightMode()
         val newMode = if (modeActuel == AppCompatDelegate.MODE_NIGHT_YES) {
@@ -32,7 +34,7 @@ class SettingsActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(newMode)
     }
 
-
+    //revient sur l'activité Menu
     public fun goBack(view: View){
         finish()
     }
