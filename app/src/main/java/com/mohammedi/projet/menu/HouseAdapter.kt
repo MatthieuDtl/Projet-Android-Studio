@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.mohammedi.projet.R
 import java.util.ArrayList
 
+//adapter de la classe MenuActivity
 data class HouseAdapter(
     private val context: Context,
     private val dataSource: ArrayList<HouseData>,

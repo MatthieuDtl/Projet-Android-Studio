@@ -8,9 +8,11 @@ import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
 import com.mohammedi.projet.R
 import java.util.ArrayList
 
+//adapter de la classe DeviceActivity
 class DeviceAdapter(
     private val context: Context,
     private val dataSource: ArrayList<DeviceData>,
@@ -36,11 +38,27 @@ class DeviceAdapter(
         val stopButton = rowView.findViewById<Button>(R.id.stopButton)
 
         deviceId.text = device.id
-        if (device.type == "light")
-            iconView.setImageResource(R.drawable.devices_bouton)
-        else
-            iconView.setImageResource(R.drawable.house_bouton)
 
+
+        val modeActuel = AppCompatDelegate.getDefaultNightMode()
+
+        //chargement de l'icone en fonction du thème (blanc si thème sombre et noir si thème clair)
+        if (modeActuel == AppCompatDelegate.MODE_NIGHT_YES) {
+            if (device.type == "light")
+                iconView.setImageResource(R.drawable.icon_light_white)
+            else
+                iconView.setImageResource(R.drawable.icon_door_white)
+        }
+        else{
+            if (device.type == "light")
+                iconView.setImageResource(R.drawable.icon_light)
+            else
+                iconView.setImageResource(R.drawable.icon_door)
+        }
+
+        //affichage des boutons en fonction du type de périphérique
+        //Boutons ouvrir, fermer et stop si le périphérique est une porte
+        //sinon boutons allumer et éteindre
         if (device.type == "rolling shutter" || device.type == "garage door") {
             btnOpen.text = "Ouvrir"
             btnClose.text = "Fermer"

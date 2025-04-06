@@ -9,14 +9,12 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="24dp"
         android:hint="Login"
-        app:boxStrokeColor="#FFFFFF"
         app:startIconDrawable="@drawable/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:text="md"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -40,7 +37,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:hint="Mot de passe"
-        app:boxStrokeColor="#FFFFFF"
         app:startIconDrawable="@drawable/lock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +47,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:text="123"
             />
     </com.google.android.material.textfield.TextInputLayout>
 

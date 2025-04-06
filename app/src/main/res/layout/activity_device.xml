@@ -1,54 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:colorBackground"
     tools:context=".device.DeviceActivity">
 
     <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="Liste des Périphériques"
+        android:id="@+id/deviceTitle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="?android:colorPrimary"
+        android:gravity="center"
+        android:text="Périphériques"
+        android:textColor="?android:textColor"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/ListDevices"
+        android:id="@+id/listDevices"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#1386E2"
-        app:layout_constraintBottom_toTopOf="@id/btnNight"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="?android:colorBackground"
+        app:layout_constraintTop_toBottomOf="@id/deviceTitle"
+        app:layout_constraintBottom_toTopOf="@id/modeButtonsBar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
 
-    <Button
-        android:id="@+id/btnNight"
+    <LinearLayout
+        android:id="@+id/modeButtonsBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:onClick="nightMode"
-        android:text="Mode Nuit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnDay"
+        android:orientation="horizontal"
+        android:background="?android:colorPrimary"
+        android:padding="8dp"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toTopOf="@id/btnBack"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.5" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnNight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mode Nuit"
+            android:onClick="nightMode"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="?android:colorPrimary"
+            android:padding="8dp"
+            />
+
+        <Button
+            android:id="@+id/btnDay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mode jour"
+            android:onClick="dayMode"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="?android:colorPrimary"
+            android:padding="8dp" />
+
+</LinearLayout>
 
     <Button
-        android:id="@+id/btnDay"
+        android:id="@+id/btnBack"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:onClick="dayMode"
-        android:text="Mode jour"
+        android:layout_height="60dp"
+        android:text="Retour"
+        android:onClick="goBack"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="?android:colorPrimary"
+        android:padding="8dp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnNight"
-        app:layout_constraintWidth_percent="0.5" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

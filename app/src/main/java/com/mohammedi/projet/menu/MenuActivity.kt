@@ -19,6 +19,8 @@ import com.mohammedi.projet.device.DeviceActivity
 import com.mohammedi.projet.register.RegisterActivity
 import com.mohammedi.projet.settings.SettingsActivity
 
+//activité qui permet la gestion principale de l'application en choissiant entre
+//l'envoi des commandes, la gestion des utilisateurs et les paramètres
 class MenuActivity : AppCompatActivity() {
     private val houseData = ArrayList<HouseData>()
     private var selectedHouseData: HouseData? = null
@@ -53,12 +55,15 @@ class MenuActivity : AppCompatActivity() {
         loadHouses()
     }
 
+    //initialisation de l'adapter
+    //si une maison est sélectionnée, on rend cliquable le bouton périphérique
+    //et si cette maison est celle du propriétaire, on rend cliquable le bouton Users
     private fun initHousesListView() {
         val listView = findViewById<ListView>(R.id.ListHouses)
         listView.adapter = HouseAdapter(this, houseData)
 
         listView.onItemClickListener =
-            OnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
+            OnItemClickListener { _, _, position: Int, _ ->
                 selectedHouseData = houseData[position]
                 btnPeriph.isEnabled = true
                 btnPeriph.alpha = 1.0f
@@ -74,10 +79,12 @@ class MenuActivity : AppCompatActivity() {
             }
     }
 
+    //chargement des maisons
     private fun loadHouses() {
         Api().get<List<HouseData>?>("https://polyhome.lesmoulinsdudev.com/api/houses", ::loadHousesSuccess, token)
     }
 
+    //succès du chargement
     private fun loadHousesSuccess(responseCode: Int, loadedHouseData: List<HouseData>?) {
         if (responseCode == 200 && loadedHouseData != null) {
             runOnUiThread {
@@ -88,6 +95,7 @@ class MenuActivity : AppCompatActivity() {
         }
     }
 
+    //navigation entre une activité plaçée en paramètre seulement si une maison est sélectionnée
     private fun navigateTo(activityClass: Class<*>) {
         if (selectedHouseData != null) {
             val intent = Intent(this, activityClass)
@@ -97,10 +105,12 @@ class MenuActivity : AppCompatActivity() {
         }
     }
 
+    //déconnexion
     fun logout(view:View){
         finish()
     }
 
+    //chargement de l'activité settings
     fun goToSettings(view:View){
         val intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)

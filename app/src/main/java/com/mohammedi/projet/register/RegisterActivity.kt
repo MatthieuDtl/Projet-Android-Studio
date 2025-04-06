@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.mohammedi.projet.Api
 import com.mohammedi.projet.R
 
+//activité qui permet de s'inscrire
 class RegisterActivity : AppCompatActivity() {
     private var reg1 = RegisterData("","")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,12 +24,14 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    //revient à l'activité de connexion
     public fun goToLogin(view: View)
     {
         finish();
     }
 
 
+    //envoie les données du nouveau compte à l'API
     public fun register(view: View){
 
         val login = findViewById<TextView>(R.id.txtRegisterName).text.toString()
@@ -39,10 +42,14 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
+    //succès de l'envoi des données
     private fun registerSuccess(responseCode: Int)
     {
         if (responseCode == 200)
-            finish();
-
+            finish()
+        else{
+            val txtError = findViewById<TextView>(R.id.txtError)
+            txtError.text =  "Une erreur est survenue durant la création du compte"
+        }
     }
 }

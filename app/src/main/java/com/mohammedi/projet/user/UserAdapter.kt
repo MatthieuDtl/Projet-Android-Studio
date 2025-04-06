@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.mohammedi.projet.R
 
-
+//adaptet de l'activité User
 class UserAdapter(
     private val context: Context,
     private val dataSource: ArrayList<UserData>,

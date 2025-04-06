@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212"
+    android:background="?android:colorBackground"
     tools:context=".menu.MenuActivity"
     tools:ignore="ExtraText">
 
@@ -13,10 +14,10 @@
         android:id="@+id/appTitle"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#440E1012"
+        android:background="?android:colorPrimary"
         android:gravity="center"
         android:drawableBottom="@drawable/house_acceuil"
-        android:textColor="@android:color/white"
+        android:textColor="?android:textColor"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,24 +28,24 @@
         android:id="@+id/ListHouses"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="?android:colorBackground"
+        android:textColor="?android:textColor"
         app:layout_constraintTop_toBottomOf="@id/appTitle"
         app:layout_constraintBottom_toTopOf="@id/bottomBar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="#1E1E1E"
-        android:textColor="@android:color/white"  />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="#440E1012"
+        android:background="?android:colorPrimary"
         android:orientation="horizontal"
         android:padding="8dp"
+        android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:elevation="8dp">
+        app:layout_constraintRight_toRightOf="parent">
 
         <Button
             android:id="@+id/btnHomes"
